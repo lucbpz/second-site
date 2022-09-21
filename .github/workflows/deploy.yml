@@ -15,22 +15,17 @@ permissions:
   id-token: write
 
 jobs:
-  prepare:
+  build:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout your repository using git
       uses: actions/checkout@v2   
     - name: Move files to root
       run: "mv web/* ."
-
-  build:
-    needs: prepare
-    runs-on: ubuntu-latest
-    steps:       
-      - name: Install, build, and upload your site
-        uses: withastro/action@v0
-        with:
-          package-manager: npm
+    - name: Install, build, and upload your site
+      uses: withastro/action@v0
+      with:
+        package-manager: npm
 
   deploy:
     needs: build
