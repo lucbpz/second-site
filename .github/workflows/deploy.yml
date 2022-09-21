@@ -24,8 +24,7 @@ jobs:
         uses: withastro/action@v0
         with:
           node-version: '16'
-          cache: 'npm'
-          cache-dependency-path: web/package-lock.json`
+          path: web/package-lock.json`
 
 
   deploy:
@@ -39,7 +38,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
         with:
-          node-version: '16'
-          cache: 'npm'
-          cache-dependency-path: web/package-lock.json`
           path: web/`
