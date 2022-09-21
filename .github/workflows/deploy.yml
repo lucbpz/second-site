@@ -23,7 +23,9 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v0
         with:
-          path: ./web
+          node-version: '16'
+          cache: 'npm'
+          cache-dependency-path: web/package-lock.json`
 
 
   deploy:
@@ -37,4 +39,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v1
         with:
-          path: ./web
+          node-version: '16'
+          cache: 'npm'
+          cache-dependency-path: web/package-lock.json`
+          path: web/`
