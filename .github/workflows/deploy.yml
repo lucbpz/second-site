@@ -7,6 +7,8 @@ on:
     branches: [ main ]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
+    inputs:
+      path: web
   
 # Allow this job to clone the repo and create a page deployment
 permissions:
@@ -23,8 +25,7 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v0
         with:
-          node-version: '16'
-          path: web/package-lock.json`
+          path: web
 
 
   deploy:
