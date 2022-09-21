@@ -15,15 +15,23 @@ permissions:
   id-token: write
 
 jobs:
-  build:
+  prepare:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
-        uses: actions/checkout@v2          
+    - name: Checkout your repository using git
+      uses: actions/checkout@v2   
+    - name: Copy file
+      uses: canastro/copy-action@0.0.2
+      with:
+        source: "web/*" 
+        target: "/*" 
+
+  build:
+    needs: prepare
+    runs-on: ubuntu-latest
+    steps:       
       - name: Install, build, and upload your site
         uses: withastro/action@v0
-        with:
-          path: web
 
 
   deploy:
