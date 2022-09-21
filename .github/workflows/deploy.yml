@@ -20,11 +20,8 @@ jobs:
     steps:
     - name: Checkout your repository using git
       uses: actions/checkout@v2   
-    - name: Copy file
-      uses: canastro/copy-action@0.0.2
-      with:
-        source: "web/*" 
-        target: "/*" 
+    - name: Move files to root
+      run: "mv web/* ."
 
   build:
     needs: prepare
